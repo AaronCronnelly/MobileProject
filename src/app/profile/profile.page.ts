@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-
-const { Filesystem } = Plugins;
+import { ToastController } from '@ionic/angular';
+import { File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-profile',
@@ -9,21 +8,21 @@ const { Filesystem } = Plugins;
   styleUrls: ['profile.page.scss'],
 })
 export class ProfilePage {
-  constructor() {}
+  constructor(private toastController: ToastController, private file: File) {}
 
   async saveData() {
     // Retrieve input values
-    const firstName = (<HTMLInputElement>document.getElementById('firstNameInput')).value;
-    const lastName = (<HTMLInputElement>document.getElementById('lastNameInput')).value;
-    const email = (<HTMLInputElement>document.getElementById('emailInput')).value;
-    const age = (<HTMLInputElement>document.getElementById('ageInput')).value;
+    const airline = (document.getElementById('airlineInput') as HTMLInputElement).value;
+    const tailNumber = (document.getElementById('tailNumberInput') as HTMLInputElement).value;
+    const type = (document.getElementById('typeSelect') as HTMLSelectElement).value;
+    const livery = (document.getElementById('liverySelect') as HTMLSelectElement).value;
 
     // Create an object to store the data
     const profileData = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      age: age
+      airline: airline,
+      tailNumber: tailNumber,
+      type: type,
+      livery: livery
     };
 
     // Convert the object to JSON string
@@ -31,20 +30,22 @@ export class ProfilePage {
 
     // Save the data to the filesystem
     try {
-      await Filesystem['writeFile']({
-        path: 'profile_data.txt',
-        data: jsonData,
-        directory: 'DATA',
-        encoding: 'utf-8'
-      });
+      const result = await this.file.writeFile(this.file.dataDirectory, 'profile_data.txt', jsonData, { replace: true });
 
-      // Optionally, you can provide feedback to the user that the data has been saved
-      alert('Data saved successfully!');
+      if (result.isFile) {
+        // Show the toast message
+        const toast = await this.toastController.create({
+          message: 'Data saved successfully',
+          duration: 2000,
+          position: 'bottom'
+        });
+        toast.present();
+      } else {
+        console.error('Error saving data');
+      }
     } catch (error) {
       console.error('Error saving data:', error);
       // Handle error
     }
   }
 }
-
-

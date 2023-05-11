@@ -1,57 +1,43 @@
-<ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu Content</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding"><ion-list>
-      <ion-item routerLink="/home">Home</ion-item>
-      <ion-item routerLink="/about">About</ion-item>
-      <ion-item routerLink="/contact">Contact</ion-item>
-    </ion-list></ion-content>
-</ion-menu>
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <div class="PlaneData">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Plane Data</ion-card-title>
-          <ion-card-subtitle>Please fill in all the data and then press add</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list>
+<ion-content>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-text id="Heading">Scroll Down</ion-text>
+      <img src="../../assets/Images/F4.jpg" alt="">
+      <div class="PlaneData">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Contact</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
             <ion-list>
               <ion-item>
-                <ion-input label="Text input" placeholder="Enter Airline"></ion-input>
+                <ion-input label="Text input" placeholder="Enter Airline" id="airlineInput"></ion-input>
               </ion-item>
-              <br>
               <ion-item>
-                <ion-input label="Text input" placeholder="Enter Tail Number"></ion-input>
+                <ion-input label="Text input" placeholder="Enter Tail Number" id="tailNumberInput"></ion-input>
               </ion-item>
-              <br>
-              <ion-select aria-label="Cargo" placeholder="Select Type">
+              <ion-select aria-label="Cargo" placeholder="Select Type" id="typeSelect">
                 <ion-select-option value="passenger">Passenger</ion-select-option>
                 <ion-select-option value="cargo">Cargo</ion-select-option>
-                <ion-select-option value="miltary">Miltary</ion-select-option>
+                <ion-select-option value="military">Military</ion-select-option>
               </ion-select>
-
-              <ion-select aria-label="Cargo" placeholder="Special Livery">
+              <ion-select aria-label="Cargo" placeholder="Special Livery" id="liverySelect">
                 <ion-select-option value="sYes">Yes</ion-select-option>
-                <ion-select-option value="sNO">No</ion-select-option>
+                <ion-select-option value="sNo">No</ion-select-option>
               </ion-select>
             </ion-list>
-          </ion-list>
-          <ion-button>Add</ion-button>
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </ion-content>
-</div>
+            <ion-button (click)="saveData()">Save</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-content>
+  </div>
+</ion-content>
