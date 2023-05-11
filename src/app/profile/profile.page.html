@@ -5,10 +5,10 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding"><ion-list>
-    <ion-item routerLink="/home">Home</ion-item>
-    <ion-item routerLink="/about">About</ion-item>
-    <ion-item routerLink="/contact">Contact</ion-item>
-  </ion-list></ion-content>
+      <ion-item routerLink="/home">Home</ion-item>
+      <ion-item routerLink="/about">About</ion-item>
+      <ion-item routerLink="/contact">Contact</ion-item>
+    </ion-list></ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
   <ion-header>
@@ -19,5 +19,39 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">Profile Page </ion-content>
+  <ion-content class="ion-padding">
+    <div class="PlaneData">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Plane Data</ion-card-title>
+          <ion-card-subtitle>Please fill in all the data and then press add</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-list>
+              <ion-item>
+                <ion-input label="Text input" placeholder="Enter Airline"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-input label="Text input" placeholder="Enter Tail Number"></ion-input>
+              </ion-item>
+              <br>
+              <ion-select aria-label="Cargo" placeholder="Select Type">
+                <ion-select-option value="passenger">Passenger</ion-select-option>
+                <ion-select-option value="cargo">Cargo</ion-select-option>
+                <ion-select-option value="miltary">Miltary</ion-select-option>
+              </ion-select>
+
+              <ion-select aria-label="Cargo" placeholder="Special Livery">
+                <ion-select-option value="sYes">Yes</ion-select-option>
+                <ion-select-option value="sNO">No</ion-select-option>
+              </ion-select>
+            </ion-list>
+          </ion-list>
+          <ion-button>Add</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
 </div>
